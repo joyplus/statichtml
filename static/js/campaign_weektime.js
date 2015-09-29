@@ -1,4 +1,3 @@
-        
 
         //hover delete button
         $("#readableWeekTime ul li").hover(

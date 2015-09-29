@@ -376,12 +376,15 @@
     <script src="../../../static/js/datetimepicker.min.js"></script>
     <script src="../../../static/js/campaign_weektime.js"></script>
     <script type="text/JavaScript">
-        $('#start_date').datetimepicker({
-            format: 'yyyy-mm-dd'
+        $(function(){
+            $('#start_date').datetimepicker({
+                format: 'yyyy-mm-dd'
+            });
+            $('#end_date').datetimepicker({
+                format: 'yyyy-mm-dd'
+            });
         });
-        $('#end_date').datetimepicker({
-            format: 'yyyy-mm-dd'
-        });
+        
     </script>
 
 
