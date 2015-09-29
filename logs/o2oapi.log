@@ -1,0 +1,7 @@
+2015/09/29 19:43:03 [app.go:103] [I] http server Running on :8080
+2015/09/29 19:43:13 [router.go:845] [D] | GET        | /public/index                            | 19.798806ms      | match      | /public/index                            | 
+2015/09/29 19:43:13 [router.go:845] [D] | GET        | /public/login                            | 19.790304ms      | match      | /public/login                            | 
+2015/09/29 19:43:19 [router.go:845] [D] | POST       | /public/login                            | 3.086772ms       | match      | /public/login                            | 
+2015/09/29 19:43:19 [router.go:845] [D] | GET        | /public/index                            | 60.973138ms      | match      | /public/index                            | 
+2015/09/29 19:43:19 [router.go:845] [D] | POST       | /public/index                            | 2.384683ms       | match      | /public/index                            | 
+2015/09/29 19:43:58 [router.go:845] [D] | GET        | /api/addcampaign                         | 869.002µs        | notmatch   | 
