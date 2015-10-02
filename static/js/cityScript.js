@@ -8,7 +8,7 @@ citySelector.pc[2] = new Array("天津", "和平|东丽|河东|西青|河西|津
 citySelector.pc[3] = new Array("重庆", "万州|涪陵|渝中|大渡口|江北|沙坪坝|九龙坡|南岸|北碚|万盛|双挢|渝北|巴南|黔江|长寿|綦江|潼南|铜梁|大足|荣昌|壁山|梁平|城口|丰都|垫江|武隆|忠县|开县|云阳|奉节|巫山|巫溪|石柱|秀山|酉阳|彭水|江津|合川|永川|南川");
 citySelector.pc[4] = new Array("河北", "石家庄|邯郸|邢台|保定|张家口|承德|廊坊|唐山|秦皇岛|沧州|衡水");
 citySelector.pc[5] = new Array("山西", "太原|大同|阳泉|长治|晋城|朔州|吕梁|忻州|晋中|临汾|运城");
-citySelector.pc[6] = new Array("内蒙古", "呼和浩特|包头|乌海|赤峰|呼伦贝尔|通辽|乌兰察布|鄂尔多斯|巴彦淖尔");
+citySelector.pc[6] = new Array("内蒙", "呼和浩特|包头|乌海|赤峰|呼伦贝尔|通辽|乌兰察布|鄂尔多斯|巴彦淖尔");
 citySelector.pc[7] = new Array("辽宁", "沈阳|大连|鞍山|抚顺|本溪|丹东|锦州|营口|阜新|辽阳|盘锦|铁岭|朝阳|葫芦岛");
 citySelector.pc[8] = new Array("吉林", "长春|吉林|四平|辽源|通化|白山|松原|白城");
 citySelector.pc[9] = new Array("黑龙江", "哈尔滨|齐齐哈尔|牡丹江|佳木斯|大庆|绥化|鹤岗|鸡西|黑河|双鸭山|伊春|七台河");
@@ -54,6 +54,7 @@ citySelector.cityInit = function (input) {
 
         $("#js_cityBox").remove();
         $("body").append(citySelector.template);
+        $("body").append("<div id='box_shadow'></div>");
 
         var _top = $(this).offset().top + 40,
             _left = $(this).offset().left,
@@ -66,7 +67,19 @@ citySelector.cityInit = function (input) {
         }
 
         var label = "false";
+        $("#list_shadow").bind("click",function(){
+            $("#js_provList").remove();
+            $("#list_shadow").remove();
+        });
+        $("#box_shadow").bind("click",function(){
+            $("#js_provList").remove();
+            $("#list_shadow").remove();
+            $("#box_shadow").remove();
+            $("#js_cityBox").remove();
+            
+        });
         $("#js_provList").on("click", ".provinceName", function () {
+            $("body").append("<div id='list_shadow'></div>");
             function createUl(_this){
                 _this.css({ "background": "#fff", "border-color": "#d8d8d8", "border-bottom-color": "#fff", "position": "absolute", "top": "0", "left": "0", "z-index": "999999" });
                 var xuhao = _this.parent("li").attr("data-xuhao"),
