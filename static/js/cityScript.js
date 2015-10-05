@@ -1,5 +1,5 @@
 ﻿var citySelector = {};
-
+cityList = new Array();
 citySelector.pc = new Array();
 
 citySelector.pc[0] = new Array("北京", "北京|东城|西城|崇文|宣武|朝阳|丰台|石景山|海淀|门头沟|房山|通州|顺义|昌平|大兴|平谷|怀柔|密云|延庆");
@@ -110,13 +110,36 @@ citySelector.cityInit = function (input) {
             e.stopPropagation();
             //$("#" + _input).val($(this).html());
             $("#js_cityBox").remove();
-            var appendtext = '<li data-id="12" class="selected">'+$(this).html()+'<i class="selected-i">×</i></li>'
+            var appendtext = '<li data-id="12" class="selected">'+$(this).html()+'<span style="display:none;" class="get_html">'+$(this).html()+'</span>'+'<i class="selected-i">×</i></li>'
+            cityList.push($(this).html());
+            console.log(cityList);
+            $flag = 0;
             $("#selected-city-list-ul").append(appendtext).on("click",'i',function(){
+                $temp = $(this).parent().find('.get_html').html();
                 $(this).parent().remove();
+                if($flag == 0){
+                    //alert($temp);
+                    $('.cityshow_append_span').each(function(){
+                        if($(this).html() == $temp + " "){
+                            $(this).remove();
+                        }
+                    });
+                    $flag=1;
+                }
+                $flag=0;
             });
+            $("#cityshow_append").append('<span class="cityshow_append_span">'+$(this).html()+' </span>');
         });
     });
 }
+
+        function delete_append(cityies){
+            $("#cityshow_append").html("");
+            $.each(cityies, function(i,val){      
+                $("#cityshow_append").append('<span class="cityshow_append_span">'+val+' </span>');
+            });
+        };
+
         $("#list_shadow").bind("click",function(){
             //alert(123);
             $("#js_provList").remove();
