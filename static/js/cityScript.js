@@ -54,7 +54,7 @@ citySelector.cityInit = function (input) {
 
         $("#js_cityBox").remove();
         $("body").append(citySelector.template);
-        $("body").append("<div id='box_shadow'></div>");
+        //$("body").append("<div id='box_shadow'></div>");
 
         var _top = $(this).offset().top + 40,
             _left = $(this).offset().left,
@@ -67,19 +67,9 @@ citySelector.cityInit = function (input) {
         }
 
         var label = "false";
-        $("#list_shadow").bind("click",function(){
-            $("#js_provList").remove();
-            $("#list_shadow").remove();
-        });
-        $("#box_shadow").bind("click",function(){
-            $("#js_provList").remove();
-            $("#list_shadow").remove();
-            $("#box_shadow").remove();
-            $("#js_cityBox").remove();
-            
-        });
+
         $("#js_provList").on("click", ".provinceName", function () {
-            $("body").append("<div id='list_shadow'></div>");
+            //$("body").append("<div id='list_shadow'></div>");
             function createUl(_this){
                 _this.css({ "background": "#fff", "border-color": "#d8d8d8", "border-bottom-color": "#fff", "position": "absolute", "top": "0", "left": "0", "z-index": "999999" });
                 var xuhao = _this.parent("li").attr("data-xuhao"),
@@ -118,8 +108,27 @@ citySelector.cityInit = function (input) {
         var _input = input;
         $("#js_cityBox").on("click", ".js_cityName", function (e) {
             e.stopPropagation();
-            $("#" + _input).val($(this).html());
+            //$("#" + _input).val($(this).html());
             $("#js_cityBox").remove();
+            var appendtext = '<li data-id="12" class="selected">'+$(this).html()+'<i class="selected-i">×</i></li>'
+            $("#selected-city-list-ul").append(appendtext).on("click",'i',function(){
+                $(this).parent().remove();
+            });
         });
     });
 }
+        $("#list_shadow").bind("click",function(){
+            //alert(123);
+            $("#js_provList").remove();
+            $("#list_shadow").remove();
+        });
+        $("#box_shadow").bind("click",function(){
+            //alert(456);
+            $("#js_provList").remove();
+            $("#list_shadow").remove();
+            $("#box_shadow").remove();
+            $("#js_cityBox").remove();
+            
+        });
+
+
