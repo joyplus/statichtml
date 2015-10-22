@@ -4,72 +4,35 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
         <title>scott教你学理财</title>
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="p2p.css">
     </head>
     <body>
         <div class="main">
-            <table class="ui-filter">
+            <table class="ui-filter" id="p2p_filter">
                     <tbody>
                         <tr>
-                            <td class="ui-select amount-select">
-                                <span class="ui-select-title">投资金额</span><i class="iconfont icon-unfold"></i>
-                                <div class="ui-filter-con" style="display: none;">
-                                        <p class="select-item selected" data-value="0">不限</p>
-                                        <p class="select-item " data-value="1">0-5万元</p>
-                                </div>
-                            </td>
-                            <td class="ui-select cycle-select">
-                                <span class="ui-select-title">投资周期</span><i class="iconfont icon-unfold"></i>
-                                <div class="ui-filter-con" style="display: none;">
-                                        <p class="select-item selected" data-value="0">不限</p>
-                                </div>
-                            </td>
-                            <td class="ui-select profit-select">
-                                <span class="ui-select-title">预期收益</span><i class="iconfont icon-unfold"></i>
-                                <div class="ui-filter-con" style="display: none;">
-                                        <p class="select-item selected" data-value="0">不限</p>
+                            <td class="ui-select amount-select" v-repeat="item in select_titles" v-on="click: toggle(item)">
+                                <span class="ui-select-title {{item.ifdisplay ? 'ui-select-up':''}}">{{item.child_title}}</span><i class="fa fa-angle-{{item.ifdisplay ? 'up':'down'}} fa-fw {{item.ifdisplay ? 'ui-select-up':''}}"></i>
+                                <div class="ui-filter-con" style="display: {{item.ifdisplay ? 'block':'none'}};">
+                                        <p class="select-item" data-value="{{$index}}" v-repeat="item.child_content">{{$value}}</p>
                                 </div>
                             </td>
                         </tr>
                     </tbody>
             <table>
-            <div class="result wealth-result">
-                <a href="#" tag="" class="result-item zx_wise_ad" data-sign-time="57">
-                    <div><span>三分贷  - 周末理财</span></div>
+            <div class="result wealth-result" id="wealth_result">
+                <a href="{{wealth.url}}" tag="" class="result-item" v-repeat="wealth in wealth_contents">
+                    <div><span>{{wealth.title}}</span></div>
                     <ul>
-                        <li class="limit">期限：<b>6</b>个月</li>
-                        <li class="expected">预期收益率：<em>17.80%</em></li>
+                        <li class="limit">期限：<b>{{wealth.time}}</b>个月</li>
+                        <li class="expected">预期收益率：<em>{{wealth.profit}}</em></li>
                     </ul>
-                </a> 
-                <a href="#" tag="" class="result-item zx_wise_ad" data-sign-time="57">
-                    <div><span>三分贷  - 周末理财</span></div>
-                    <ul>
-                        <li class="limit">期限：<b>6</b>个月</li>
-                        <li class="expected">预期收益率：<em>17.80%</em></li>
-                    </ul>
-                </a> 
-                <a href="#" tag="" class="result-item zx_wise_ad" data-sign-time="57">
-                    <div><span>三分贷  - 周末理财</span></div>
-                    <ul>
-                        <li class="limit">期限：<b>6</b>个月</li>
-                        <li class="expected">预期收益率：<em>17.80%</em></li>
-                    </ul>
-                </a> 
-                <a href="#" tag="" class="result-item zx_wise_ad" data-sign-time="57">
-                    <div><span>三分贷  - 周末理财</span></div>
-                    <ul>
-                        <li class="limit">期限：<b>6</b>个月</li>
-                        <li class="expected">预期收益率：<em>17.80%</em></li>
-                    </ul>
-                </a> 
-                <a href="#" tag="" class="result-item zx_wise_ad" data-sign-time="57">
-                    <div><span>三分贷  - 周末理财</span></div>
-                    <ul>
-                        <li class="limit">期限：<b>6</b>个月</li>
-                        <li class="expected">预期收益率：<em>17.80%</em></li>
-                    </ul>
-                </a>   
+                </a>    
             </div>
         </div>
     </body>
+
+    <script src="./bower_components/vue/dist/vue.min.js"></script>
+    <script src="./p2p.js"></script>
 </html>
