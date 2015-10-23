@@ -46,15 +46,21 @@ ol, ul {
 .ui-filter-con {
     position: fixed;
     top: 50px;
-    bottom: 0;
     left: 0;
     text-align: left;
     width: 100%;
     z-index: 110;
     overflow: auto;
     display: none;
-    padding: 0 0 20px 0;
-    background: rgba(0,0,0,0.5);
+}
+.ui-filter-con .shadow{
+	position: fixed;
+	top:50px;
+    bottom:0px;
+    width: 100%;
+    z-index: -1;
+    overflow: auto;
+	background: rgba(0,0,0,0.5);
 }
 .ui-filter-con p.select-item {
     background: #fff;
