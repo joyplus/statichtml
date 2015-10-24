@@ -28,8 +28,8 @@
                 <a href="{{wealth.url}}" tag="" class="result-item" v-repeat="wealth in wealth_contents" style="display: {{wealth.ifdisplay ? 'block':'none'}};">
                     <div><span>{{wealth.title}}</span></div>
                     <ul>
-                        <li class="limit">期限：<b>{{wealth.time}}</b>个月</li>
-                        <li class="expected">预期收益率：<em>{{wealth.profit}}</em></li>
+                        <li class="limit">期限：<b>{{wealth.time}}</b>个月{{wealth.time==1 ? '及以内' : ''}}</li>
+                        <li class="expected">预期收益率：<em>{{wealth.profit}}%</em></li>
                     </ul>
                 </a>    
             </div>
