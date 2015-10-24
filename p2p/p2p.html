@@ -17,7 +17,7 @@
                                     <span class="ui-select-title {{item.ifdisplay ? 'ui-select-up':''}}">{{item.child_title}}</span><i class="fa fa-angle-{{item.ifdisplay ? 'up':'down'}} fa-fw {{item.ifdisplay ? 'ui-select-up':''}}"></i>
                                 </div>
                                 <div class="ui-filter-con" style="display: {{item.ifdisplay ? 'block':'none'}};">
-                                        <p class="select-item" data-value="{{$index}}" v-repeat="item.child_content">{{$value}}</p>
+                                        <p class="select-item" data-value="{{$index}}" v-repeat="item.child_content" v-on="click: select($index,item.index,$value,item)">{{$value}}</p>
                                         <div class="shadow" v-on="click: cancel"></div>
                                 </div>
                             </td>
